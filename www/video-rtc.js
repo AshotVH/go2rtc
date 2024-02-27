@@ -19,7 +19,7 @@ export class VideoRTC extends HTMLElement {
         super();
 
         this.DISCONNECT_TIMEOUT = 5000;
-        this.RECONNECT_TIMEOUT = 30000;
+        this.RECONNECT_TIMEOUT = 1000;
 
         this.CODECS = [
             'avc1.640029',      // H.264 high 4.1 (Chromecast 1st and 2nd Gen)
