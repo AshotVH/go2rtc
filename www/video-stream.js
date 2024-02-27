@@ -95,7 +95,7 @@ class VideoStream extends VideoRTC {
     super.onpcvideo(ev);
 
     if (this.pcState !== WebSocket.CLOSED) {
-    //   this.divMode = "RTC";
+      this.divMode = "";
     }
   }
 }
