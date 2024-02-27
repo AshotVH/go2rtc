@@ -30,8 +30,8 @@
     const params = new URLSearchParams(location.search);
 
     // support multiple streams and multiple modes
-    const streams = ['cartoon'];
-    const modes = ['mse'];
+    const streams = params.getAll('src');
+    const modes = params.getAll('mode');
     if (modes.length === 0) modes.push('');
 
     while (modes.length > streams.length) {
@@ -45,8 +45,8 @@
         document.body.className = 'flex';
     }
 
-    const background = true;
-    const width = '1 0 ' + '320px';
+    const background = params.get('background') !== 'false';
+    const width = '1 0 ' + (params.get('width') || '320px');
 
     for (let i = 0; i < streams.length; i++) {
         /** @type {VideoStream} */
@@ -54,8 +54,7 @@
         video.background = background;
         video.mode = modes[i] || video.mode;
         video.style.flex = width;
-        const locationRemote = "https://streams-np04-slow-control.app.cern.ch/stream.html?src=cartoon&mode=mse";
-        video.src = new URL('api/ws?src=' + encodeURIComponent(streams[i]), locationRemote);
+        video.src = new URL('api/ws?src=' + encodeURIComponent(streams[i]), location.href);
         document.body.appendChild(video);
     }
 </script>
