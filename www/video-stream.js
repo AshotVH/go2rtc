@@ -77,7 +77,7 @@ class VideoStream extends VideoRTC {
         case "hls":
         case "mp4":
         case "mjpeg":
-        //   this.divMode = msg.type.toUpperCase();
+          this.divMode = msg.type.toUpperCase();
           break;
       }
     };
